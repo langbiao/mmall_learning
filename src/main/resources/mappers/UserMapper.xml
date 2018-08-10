@@ -163,6 +163,6 @@
     <include refid="Base_Column_List" />
     from mmall_user
     where username = #{username, jdbcType = VARCHAR}
-    and password = #{passord, jdbcType = VARCHAR}
+    and password = #{password, jdbcType = VARCHAR}
 </select>
 </mapper>

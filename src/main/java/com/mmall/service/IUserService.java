@@ -9,4 +9,6 @@ public interface IUserService {
     ServerResponse register(User user);
 
     ServerResponse<String> checkValid(String str, String type);
+
+    ServerResponse checkAdminRole(User user);
 }
