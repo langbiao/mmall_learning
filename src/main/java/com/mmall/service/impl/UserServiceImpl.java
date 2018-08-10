@@ -33,7 +33,7 @@ public class UserServiceImpl implements IUserService {
         }
         user.setPassword(StringUtils.EMPTY);
 
-        return ServerResponse.createBySuccess("登录成功", null);
+        return ServerResponse.createBySuccess("登录成功", user);
     }
 
     public ServerResponse register(User user) {
@@ -87,7 +87,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     public ServerResponse checkAdminRole(User user) {
-        if (user != null && user.getRole() != Const.Role.ROLE_ADMIN) {
+        if (user != null && user.getRole() == Const.Role.ROLE_ADMIN) {
             return ServerResponse.createBySuccess();
         }
 

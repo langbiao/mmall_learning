@@ -6,6 +6,7 @@ import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
 import com.mmall.service.ICategortyService;
 import com.mmall.service.IUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,36 @@ public class CategoryManageController {
         }
 
         return  iCategortyService.addCategory(categoryName, parentId);
+    }
+
+    @RequestMapping(value = "setCategoryName.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse setCategoryName(HttpSession session, Integer cateId, String categoryName) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("未登录");
+        }
+
+        if (!iUserService.checkAdminRole(user).isSuccess()) {
+            return ServerResponse.createByErrorMessage("您不是管理员");
+        }
+
+        return iCategortyService.updateCategoryName(cateId, categoryName);
+    }
+
+    @RequestMapping(value = "getChildParalelCategory.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse getChildParalelCategory(HttpSession session, @RequestParam(value = "categoryId", defaultValue = "0") Integer categoryId) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("未登录");
+        }
+
+        if (!iUserService.checkAdminRole(user).isSuccess()) {
+            return ServerResponse.createByErrorMessage("您不是管理员");
+        }
+
+        return iCategortyService.getChildParalelCategory(categoryId);
     }
 
 }
