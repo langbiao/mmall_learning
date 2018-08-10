@@ -160,6 +160,7 @@
     where emial = #{emial, jdbcType = VARCHAR}
 </select>
 <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
     <include refid="Base_Column_List" />
     from mmall_user
     where username = #{username, jdbcType = VARCHAR}
