@@ -1,14 +1,17 @@
 package com.mmall.service;
 
 import com.mmall.common.ServerResponse;
+import com.mmall.vo.CartVo;
 
 /**
- * @author laolang
- * @create 2018-08-15 11:16
- * @desc ICartService
- **/
+ * Created by geely
+ */
 public interface ICartService {
+    ServerResponse<CartVo> add(Integer userId, Integer productId, Integer count);
+    ServerResponse<CartVo> update(Integer userId,Integer productId,Integer count);
+    ServerResponse<CartVo> deleteProduct(Integer userId,String productIds);
 
-    ServerResponse add(Integer userId, Integer productId, Integer count);
-
+    ServerResponse<CartVo> list (Integer userId);
+    ServerResponse<CartVo> selectOrUnSelect (Integer userId,Integer productId,Integer checked);
+    ServerResponse<Integer> getCartProductCount(Integer userId);
 }

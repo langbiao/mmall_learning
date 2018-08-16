@@ -1,40 +1,28 @@
 package com.mmall.vo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
- * @author laolang
- * @create 2018-08-13 15:15
- * @desc 商品详情VO
- **/
+ * Created by geely
+ */
 public class ProductDetailVo {
 
-    private Integer id;
-
+    private Integer  id;
     private Integer categoryId;
-
     private String name;
-
     private String subtitle;
-
     private String mainImage;
-
     private String subImages;
-
     private String detail;
-
     private BigDecimal price;
-
     private Integer stock;
-
     private Integer status;
+    private String createTime;
+    private String updateTime;
 
-    private Date createTime;
-
-    private Date updateTime;
 
     private String imageHost;
+    private Integer parentCategoryId;
 
     public Integer getId() {
         return id;
@@ -116,19 +104,19 @@ public class ProductDetailVo {
         this.status = status;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -140,14 +128,11 @@ public class ProductDetailVo {
         this.imageHost = imageHost;
     }
 
-    public Integer getProductParentId() {
-        return productParentId;
+    public Integer getParentCategoryId() {
+        return parentCategoryId;
     }
 
-    public void setProductParentId(Integer productParentId) {
-        this.productParentId = productParentId;
+    public void setParentCategoryId(Integer parentCategoryId) {
+        this.parentCategoryId = parentCategoryId;
     }
-
-    private Integer productParentId;
-
 }
